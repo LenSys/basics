@@ -1,0 +1,30 @@
+import { useSearchTextContext } from "../lib/hooks";
+
+export default function SearchForm() {
+  const { searchText, handleChangeSearchText } = useSearchTextContext();
+
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+      }}
+      action="#"
+      className="search"
+    >
+      <button type="submit">
+        <i className="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <input
+        spellCheck="false"
+        type="text"
+        required
+        placeholder="Find remote developer jobs..."
+        onChange={(event) => {
+          handleChangeSearchText(event.target.value);
+        }}
+        value={searchText}
+      />
+    </form>
+  );
+}
